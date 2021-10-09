@@ -7,7 +7,7 @@ public class CarName {
     private static final String CAR_NAME_IS_NULL_OR_EMPTY_EXCEPTION_STATEMENT = "자동차의 이름이 null 또는 빈문자 입니다.";
     private static final int CAR_NAME_MAX_LENGTH = 5;
 
-    private String carName;
+    private final String carName;
 
     private CarName(String carName) {
         validate(carName);
