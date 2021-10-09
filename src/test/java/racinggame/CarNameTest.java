@@ -21,4 +21,11 @@ class CarNameTest {
     void exceptionTest1() {
         assertThatThrownBy(() -> carName.from("changsubkwak")).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("자동차의 이름이 null 또는 빈문자이면 예외가 발생한다.")
+    @Test
+    void exceptionTest2() {
+        assertThatThrownBy(() -> carName.from(null)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> carName.from("")).isInstanceOf(IllegalArgumentException.class);
+    }
 }
