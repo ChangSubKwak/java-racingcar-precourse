@@ -1,4 +1,4 @@
-package racinggame;
+package strategy;
 
 import static org.assertj.core.api.Assertions.*;
 
