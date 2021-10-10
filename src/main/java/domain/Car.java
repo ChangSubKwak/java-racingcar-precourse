@@ -25,6 +25,7 @@ public class Car {
     }
 
     public void forward(/* MovableStrategy movableStrategy */) {
+        // 전략 패턴 구현 필요
         carPosition = CarPosition.from(carPosition.positiveNumber() + 1);
     }
 
