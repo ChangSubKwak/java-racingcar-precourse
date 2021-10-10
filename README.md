@@ -18,22 +18,21 @@
   - [X] 0의 가능여부를 반환하는 추상메서드 작성
 - [X] 자동차위치를 의미하는 클래스(CarPosition) 구현
 - [X] 게임횟수를 의미하는 클래스(GameTryCount) 구현
-- [ ] 자동차를 의미하는 클래스(Car) 구현
-- [ ] 자동차 클래스의 일급콜렉션을 의미하는 클래스(Cars) 구현
-  - [ ] 전진 기능 구현
+- [X] 자동차의 이름과 위치를 가진 클래스(Car) 구현
+  - [X] 전진 기능(forward) 구현
+- [X] 자동차 클래스의 일급콜렉션을 의미하는 클래스(Cars) 구현
+  - [X] 전진 기능 구현
+  - [ ] 전략 설정 기능 구현
   - [ ] 우승자 결정 기능의 구현
 - [ ] 게임 진행을 관리하는 클래스(GameController) 구현
   - [ ] 게임 종료 여부 기능 구현
   - [ ] 입력오류에 대한 재입력 기능 구현
-- [ ] 게임 횟수를 의미하는 클래스(GameTryCount) 구현
-  - [ ] 횟수가 음수이면 예외 발생
-  - [ ] 횟수가 숫자이외의 값이면 예외 발생
-  - [ ] 횟수가 최대치(INT_MAX)이상의 값이면 예외 발생
 - [ ] View Layer에 전달하기 위한 클래스(CarDto)의 구현
-- [ ] 자동차 전진 전략을 결정하기 위한 인터페이스(MovableStrategy) 구현
-- [ ] 랜덤 전진 전략 클래스(RandomlyMovableStrategy) 구현
-- [ ] 무조건 전진 전략 클래스(AlwaysMovableStrategy) 구현
-- [ ] 무조건 정지 전략 클래스(NoMovableStrategy) 구현
+- [X] 자동차 전진 전략을 결정하기 위한 인터페이스(MovableStrategy) 구현
+- [X] 랜덤 전진 전략 클래스(RandomlyMovableStrategy) 구현
+- [X] 무조건 전진 전략 클래스(AlwaysMovableStrategy) 구현
+- [X] 무조건 정지 전략 클래스(NoMovableStrategy) 구현
+- [X] N번마다 이동 전략 클래스(EveryNTimesMovableStrategy) 구현
 
 ### View
 - [ ] 입력 관리 클래스(InputView) 구현
