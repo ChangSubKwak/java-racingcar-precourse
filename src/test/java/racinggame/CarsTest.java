@@ -13,4 +13,5 @@ class CarsTest {
     void createTest() {
         assertThat(Cars.of("chang", "pobi", "crong")).isInstanceOf(Cars.class);
     }
+
 }
