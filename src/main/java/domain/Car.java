@@ -8,16 +8,11 @@ public class Car implements Comparable<Car> {
     public static final int INITIAL_POSITION = 0;
 
     private final CarName carName;
-    private CarPosition carPosition;
+    private final CarPosition carPosition;
 
     private Car(String carName) {
         this.carName = CarName.from(carName);
         this.carPosition = CarPosition.from(INITIAL_POSITION);
-    }
-
-    private Car(String carName, int carPosition) {
-        this(carName);
-        this.carPosition = CarPosition.from(carPosition);
     }
 
     public static Car from(String carName) {
@@ -28,10 +23,6 @@ public class Car implements Comparable<Car> {
         if (movableStrategy.isMovable()) {
             carPosition.increase();
         }
-    }
-
-    public boolean isEqualPosition(Car car) {
-        return carPosition.equals(car.carPosition);
     }
 
     @Override
