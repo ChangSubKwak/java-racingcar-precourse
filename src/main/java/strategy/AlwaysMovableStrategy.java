@@ -1,7 +1,8 @@
 package strategy;
 
 public class AlwaysMovableStrategy implements MovableStrategy {
-    private AlwaysMovableStrategy() {}
+    private AlwaysMovableStrategy() {
+    }
 
     public static AlwaysMovableStrategy newInstance() {
         return new AlwaysMovableStrategy();

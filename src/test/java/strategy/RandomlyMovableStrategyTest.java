@@ -2,19 +2,8 @@ package strategy;
 
 import static org.assertj.core.api.Assertions.*;
 
-import java.util.stream.Stream;
-
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
-
-import nextstep.utils.Randoms;
-import strategy.AlwaysMovableStrategy;
-import strategy.EveryNTimesMovableStrategy;
-import strategy.MovableStrategy;
-import strategy.RandomlyMovableStrategy;
 
 class RandomlyMovableStrategyTest {
     @DisplayName("정적팩터리 메서드를 이용하여 객체를 생성하면 객체가 생성된다.")
@@ -23,7 +12,6 @@ class RandomlyMovableStrategyTest {
         assertThat(RandomlyMovableStrategy.newInstance()).isInstanceOf(RandomlyMovableStrategy.class);
         assertThat(RandomlyMovableStrategy.of(0, 9)).isInstanceOf(RandomlyMovableStrategy.class);
     }
-
 
     @DisplayName("랜덤 전략을 선택하면, 주어진 랜덤값이 0과 3사이이면 경우 이동여부 값은 참, 4와 9사이이면 이동여부가 값이 거짓이다.")
     @Test

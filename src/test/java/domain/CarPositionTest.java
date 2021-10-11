@@ -5,8 +5,6 @@ import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import domain.CarPosition;
-
 class CarPositionTest {
     private static final int CAR_POSITION_INITIAL_POSITION = 0;
 
