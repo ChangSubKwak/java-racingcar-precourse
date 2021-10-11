@@ -28,4 +28,7 @@ public class CarName {
         }
     }
 
+    public String carName() {
+        return carName;
+    }
 }
