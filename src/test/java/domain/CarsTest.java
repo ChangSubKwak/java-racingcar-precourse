@@ -34,7 +34,7 @@ class CarsTest {
     @ParameterizedTest(name = "움직이기 전 [{1}], 움직인 후 [{2}]")
     @MethodSource
     void forwardCarsTest(MovableStrategy movableStrategy, int asisPosition, int tobePosition) {
-        Cars cars = Fixture.testCars();
+        Cars cars = testCars();
         cars.carDtos()
             .forEach(carDto -> assertThat(carDto.getCarPosition()).isEqualTo(asisPosition));
         cars.forwardCars(movableStrategy);
