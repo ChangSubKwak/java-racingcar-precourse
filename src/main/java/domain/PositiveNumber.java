@@ -58,7 +58,7 @@ public abstract class PositiveNumber implements Comparable<PositiveNumber> {
         return o.positiveNumber - positiveNumber;
     }
 
-    protected int positiveNumber() {
+    public int number() {
         return positiveNumber;
     }
 }
