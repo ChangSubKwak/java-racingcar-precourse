@@ -2,7 +2,7 @@ package strategy;
 
 import nextstep.utils.Randoms;
 
-public class RandomlyMovableStrategy implements MovableStrategy{
+public class RandomlyMovableStrategy implements MovableStrategy {
     private static final int RANDOM_NUMBER_MIN_VALUE = 0;
     private static final int RANDOM_NUMBER_MAX_VALUE = 9;
     private static final int STANDARD_NUMBER_TO_MOVE = 4;
@@ -28,9 +28,6 @@ public class RandomlyMovableStrategy implements MovableStrategy{
     }
 
     public boolean isMovable() {
-        if (Randoms.pickNumberInRange(lowerBound, upperBound) >= STANDARD_NUMBER_TO_MOVE) {
-            return true;
-        }
-        return false;
+        return Randoms.pickNumberInRange(lowerBound, upperBound) >= STANDARD_NUMBER_TO_MOVE;
     }
 }
