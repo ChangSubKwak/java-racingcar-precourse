@@ -4,7 +4,6 @@ import static fixture.Fixture.*;
 import static org.assertj.core.api.Assertions.*;
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.stream.Stream;
 
 import org.junit.jupiter.api.DisplayName;
@@ -13,7 +12,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import fixture.Fixture;
 import strategy.AlwaysMovableStrategy;
 import strategy.MovableStrategy;
 import strategy.NoMovableStrategy;
@@ -43,7 +41,8 @@ class CarsTest {
     @DisplayName("자동차의 이름값이 중복되면 예외가 발생한다.")
     @Test
     void exceptionTest2() {
-        assertThatThrownBy(() -> Cars.from(Arrays.asList("chang", "pobi", "crong", "chang"))).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Cars.from(Arrays.asList("chang", "pobi", "crong", "chang"))).isInstanceOf(
+            IllegalArgumentException.class);
     }
 
     @DisplayName("자동차 목록에 있는 전부를 이동하면, 전략에 따른 이동패턴으로 이동하며, 위치가 증가 또는 그대로이다.")
