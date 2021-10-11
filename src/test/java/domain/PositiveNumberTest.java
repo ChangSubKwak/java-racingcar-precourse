@@ -38,10 +38,10 @@ class PositiveNumberTest {
         EnableZeroPositiveNumber enableZeroPositiveNumber = new EnableZeroPositiveNumber(1);
 
         nonZeroPositiveNumber.increase();
-        assertThat(nonZeroPositiveNumber.positiveNumber()).isEqualTo(2);
+        assertThat(nonZeroPositiveNumber.number()).isEqualTo(2);
 
         enableZeroPositiveNumber.increase();
-        assertThat(nonZeroPositiveNumber.positiveNumber()).isEqualTo(2);
+        assertThat(nonZeroPositiveNumber.number()).isEqualTo(2);
     }
 
     @DisplayName("감소 메서드를 호출하면 값이 1 감소한다.")
@@ -51,10 +51,10 @@ class PositiveNumberTest {
         EnableZeroPositiveNumber enableZeroPositiveNumber = new EnableZeroPositiveNumber(1);
 
         nonZeroPositiveNumber.decrease();
-        assertThat(nonZeroPositiveNumber.positiveNumber()).isEqualTo(0);
+        assertThat(nonZeroPositiveNumber.number()).isEqualTo(0);
 
         enableZeroPositiveNumber.decrease();
-        assertThat(nonZeroPositiveNumber.positiveNumber()).isEqualTo(0);
+        assertThat(nonZeroPositiveNumber.number()).isEqualTo(0);
     }
 
     static class NonZeroPositiveNumber extends PositiveNumber {
