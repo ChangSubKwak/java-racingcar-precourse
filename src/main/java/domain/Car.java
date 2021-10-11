@@ -1,6 +1,10 @@
 package domain;
 
-public class Car {
+import java.util.Objects;
+
+import strategy.MovableStrategy;
+
+public class Car implements Comparable<Car> {
     public static final int INITIAL_POSITION = 0;
 
     private final CarName carName;
@@ -20,16 +24,41 @@ public class Car {
         return new Car(carName);
     }
 
-    public static Car of(String carName, int carPosition) {
-        return new Car(carName, carPosition);
+    public void forward(MovableStrategy movableStrategy) {
+        if (movableStrategy.isMovable()) {
+            carPosition.increase();
+        }
     }
 
-    public void forward(/* MovableStrategy movableStrategy */) {
-        // 전략 패턴 구현 필요
-        carPosition = CarPosition.from(carPosition.positiveNumber() + 1);
+    public boolean isEqualPosition(Car car) {
+        return carPosition.equals(car.carPosition);
     }
 
-    public CarPosition position() {
-        return carPosition;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (!(o instanceof Car))
+            return false;
+        Car car = (Car)o;
+        return carName.equals(car.carName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(carName);
+    }
+
+    @Override
+    public int compareTo(Car o) {
+        return carPosition.compareTo(o.carPosition);
+    }
+
+    public String carName() {
+        return carName.carName();
+    }
+
+    public int carPosition() {
+        return carPosition.carPosition();
     }
 }
