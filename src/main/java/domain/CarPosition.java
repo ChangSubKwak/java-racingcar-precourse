@@ -12,4 +12,8 @@ public class CarPosition extends PositiveNumber {
     protected boolean enableZero() {
         return true;
     }
+
+    public int carPosition() {
+        return positiveNumber();
+    }
 }
