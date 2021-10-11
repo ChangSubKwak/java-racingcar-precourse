@@ -1,26 +1,27 @@
 package domain;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
+import java.util.Set;
 
 import dto.CarDto;
 import strategy.MovableStrategy;
 
 public class Cars {
+    private static final String CAR_NAME_ARRAY_IS_NULL_OR_EMPTY_EXCEPTION_STATEMENT = "자동차의 이름 배열이 null 입니다.";
+    private static final String CAR_NAME_DUPLICATION_EXCEPTION_STATEMENT = "자동차의 이름이 중복됩니다.";
+
     private List<Car> cars;
 
     private Cars(String... names) {
+        validateString(names);
         init();
         for (String name : names) {
             Car car = Car.from(name);
             cars.add(car);
-        }
-    }
-
-    private Cars(Car... cars) {
-        init();
-        for (Car car : cars) {
-            this.cars.add(car);
         }
     }
 
@@ -29,12 +30,54 @@ public class Cars {
     }
 
     public static Cars of(Car... cars) {
-        return new Cars(cars);
+        validateObject(cars);
+        String[] names = new String[cars.length];
+        for (int i = 0; i < cars.length; i++) {
+            names[i] = cars[i].carName();
+        }
+        return new Cars(names);
     }
 
     public static Cars from(List<String> cars) {
+        validateList(cars);
         String[] carsString = new String[cars.size()];
         return new Cars(cars.toArray(carsString));
+    }
+
+    private static void validateString(String[] names) {
+        if (Objects.isNull(names)) {
+            throw new IllegalArgumentException(CAR_NAME_ARRAY_IS_NULL_OR_EMPTY_EXCEPTION_STATEMENT);
+        }
+
+        Set<String> namesSet = new HashSet<>(Arrays.asList(names));
+        if (namesSet.size() != names.length) {
+            throw new IllegalArgumentException(CAR_NAME_DUPLICATION_EXCEPTION_STATEMENT);
+        }
+    }
+
+    private static void validateObject(Car[] cars) {
+        if (Objects.isNull(cars)) {
+            throw new IllegalArgumentException(CAR_NAME_ARRAY_IS_NULL_OR_EMPTY_EXCEPTION_STATEMENT);
+        }
+
+        Set<String> namesSet = new HashSet<>();
+        for (Car car : cars) {
+            namesSet.add(car.carName());
+        }
+        if (namesSet.size() != cars.length) {
+            throw new IllegalArgumentException(CAR_NAME_DUPLICATION_EXCEPTION_STATEMENT);
+        }
+    }
+
+    private static void validateList(List<String> cars) {
+        if (Objects.isNull(cars)) {
+            throw new IllegalArgumentException(CAR_NAME_ARRAY_IS_NULL_OR_EMPTY_EXCEPTION_STATEMENT);
+        }
+
+        Set<String> namesSet = new HashSet<>(cars);
+        if (namesSet.size() != cars.size()) {
+            throw new IllegalArgumentException(CAR_NAME_DUPLICATION_EXCEPTION_STATEMENT);
+        }
     }
 
     private void init() {
