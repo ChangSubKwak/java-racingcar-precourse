@@ -12,4 +12,8 @@ public class GameTryCount extends PositiveNumber {
     protected boolean enableZero() {
         return false;
     }
+
+    public boolean isGameEnd() {
+        return isZero();
+    }
 }
