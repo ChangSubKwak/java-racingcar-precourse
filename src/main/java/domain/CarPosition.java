@@ -14,6 +14,6 @@ public class CarPosition extends PositiveNumber {
     }
 
     public int carPosition() {
-        return positiveNumber();
+        return number();
     }
 }
