@@ -3,6 +3,8 @@ package domain;
 import static fixture.Fixture.*;
 import static org.assertj.core.api.Assertions.*;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Stream;
 
 import org.junit.jupiter.api.DisplayName;
@@ -28,6 +30,20 @@ class CarsTest {
     @Test
     void createTest() {
         assertThat(Cars.of("chang", "pobi", "crong")).isInstanceOf(Cars.class);
+    }
+
+    @DisplayName("자동차의 이름배열 값이 null로 입력받으면 예외가 발생한다.")
+    @Test
+    void exceptionTest1() {
+        assertThatThrownBy(() -> Cars.from(null)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Cars.of((String[])null)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Cars.of((Car[])null)).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("자동차의 이름값이 중복되면 예외가 발생한다.")
+    @Test
+    void exceptionTest2() {
+        assertThatThrownBy(() -> Cars.from(Arrays.asList("chang", "pobi", "crong", "chang"))).isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("자동차 목록에 있는 전부를 이동하면, 전략에 따른 이동패턴으로 이동하며, 위치가 증가 또는 그대로이다.")
