@@ -9,7 +9,12 @@ import view.InputView;
 import view.ResultView;
 
 public class GameController {
+    InputView inputView;
+    ResultView resultView;
+
     private GameController() {
+        inputView = new InputView();
+        resultView = new ResultView();
     }
 
     public static GameController newInstance() {
@@ -44,8 +49,7 @@ public class GameController {
     }
 
     private Optional<GameTryCount> generateGameTryCountFromInputCarNames() {
-        InputView inputView = new InputView();
-        ResultView resultView = new ResultView();
+
         try {
             return Optional.of(GameTryCount.from(inputView.inputGameTryCount()));
         } catch (IllegalArgumentException e) {
@@ -55,7 +59,6 @@ public class GameController {
     }
 
     public void outputResult(Cars cars, GameTryCount gameTryCount) {
-        ResultView resultView = new ResultView();
         resultView.outputGameResultStatement();
         for (int i = 0; i < gameTryCount.number(); i++) {
             cars.forwardCars(RandomlyMovableStrategy.newInstance());
