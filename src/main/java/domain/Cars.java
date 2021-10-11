@@ -2,29 +2,25 @@ package domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.TreeSet;
 
 import dto.CarDto;
 import strategy.MovableStrategy;
 
 public class Cars {
     private List<Car> cars;
-    private TreeSet<Car> sortedCars;
 
     private Cars(String... names) {
         init();
-        for (int i = 0; i < names.length; i++) {
-            Car car = Car.from(names[i]);
+        for (String name : names) {
+            Car car = Car.from(name);
             cars.add(car);
-            sortedCars.add(car);
         }
     }
 
     private Cars(Car... cars) {
         init();
-        for (int i = 0; i < cars.length; i++) {
-            this.cars.add(cars[i]);
-            sortedCars.add(cars[i]);
+        for (Car car : cars) {
+            this.cars.add(car);
         }
     }
 
@@ -36,9 +32,13 @@ public class Cars {
         return new Cars(cars);
     }
 
+    public static Cars from(List<String> cars) {
+        String[] carsString = new String[cars.size()];
+        return new Cars(cars.toArray(carsString));
+    }
+
     private void init() {
         cars = new ArrayList<>();
-        sortedCars = new TreeSet<>();
     }
 
     public void forwardCars(MovableStrategy movableStrategy) {
@@ -48,24 +48,35 @@ public class Cars {
     }
 
     public List<String> firstGroup() {
-        Car firstCar = sortedCars.first();
+        int firstPosition = getFirstPosition();
         List<String> names = new ArrayList<>();
-        for (int i = 0; i < cars.size(); i++) {
-            addToFirstGroup(firstCar, cars.get(i), names);
+
+        for (Car car : cars) {
+            addToFirstGroup(firstPosition, car, names);
         }
         return names;
     }
 
-    private void addToFirstGroup(Car firstCar, Car targetCar, List<String> names) {
-        if (firstCar.isEqualPosition(targetCar)) {
+    private int getFirstPosition() {
+        int firstPosition = 0;
+        for (Car car : cars) {
+            if (firstPosition < car.carPosition()) {
+                firstPosition = car.carPosition();
+            }
+        }
+        return firstPosition;
+    }
+
+    private void addToFirstGroup(int firstPosition, Car targetCar, List<String> names) {
+        if (firstPosition == targetCar.carPosition()) {
             names.add(targetCar.carName());
         }
     }
 
     public List<CarDto> carDtos() {
         List<CarDto> carDtos = new ArrayList<>();
-        for (int i = 0; i < cars.size(); i++) {
-            carDtos.add(CarDto.from(cars.get(i)));
+        for (Car car : cars) {
+            carDtos.add(CarDto.from(car));
         }
         return carDtos;
     }
