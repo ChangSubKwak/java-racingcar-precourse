@@ -30,8 +30,6 @@ public class GameController {
     }
 
     private Optional<Cars> generateCarsFromInputCarNames() {
-        InputView inputView = new InputView();
-        ResultView resultView = new ResultView();
         try {
             return Optional.of(Cars.from(inputView.inputCarNames()));
         } catch (IllegalArgumentException e) {
