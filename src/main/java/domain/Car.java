@@ -1,10 +1,8 @@
 package domain;
 
-import java.util.Objects;
-
 import strategy.MovableStrategy;
 
-public class Car implements Comparable<Car> {
+public class Car {
     public static final int INITIAL_POSITION = 0;
 
     private final CarName carName;
@@ -23,26 +21,6 @@ public class Car implements Comparable<Car> {
         if (movableStrategy.isMovable()) {
             carPosition.increase();
         }
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (!(o instanceof Car))
-            return false;
-        Car car = (Car)o;
-        return carName.equals(car.carName);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(carName);
-    }
-
-    @Override
-    public int compareTo(Car o) {
-        return carPosition.compareTo(o.carPosition);
     }
 
     public String carName() {
