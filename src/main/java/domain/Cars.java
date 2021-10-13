@@ -16,6 +16,13 @@ public class Cars {
 
     private List<Car> cars;
 
+    private Cars(Car... cars) {
+        this.cars = new ArrayList<>();
+        for (Car car : cars) {
+            this.cars.add(car);
+        }
+    }
+
     private Cars(String... names) {
         validateString(names);
         init();
@@ -31,11 +38,8 @@ public class Cars {
 
     public static Cars of(Car... cars) {
         validateObject(cars);
-        String[] names = new String[cars.length];
-        for (int i = 0; i < cars.length; i++) {
-            names[i] = cars[i].carName();
-        }
-        return new Cars(names);
+
+        return new Cars(cars);
     }
 
     public static Cars from(List<String> cars) {
